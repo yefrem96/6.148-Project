@@ -1,0 +1,25 @@
+
+<section id="audio"> 
+</section>
+<h2>Upload a new musicfile (.mp3, .Wav, or .Ogg)</h2>
+	<%= form_tag upload_path, :method => "post", :multipart => true do %>
+    	<%= file_field_tag "mp3file" %>
+    	<%= submit_tag "Upload" %>
+<% end %>
+
+<h2>Download and Delete Existing MP3's</h2>
+<table>
+	<% if (@musictracks.nil?) %>
+			<p> "No songs" </p> 
+	<% else %>
+<% @musictracks.each do |musictrack| %>
+    <tr>
+    	<td><%= unsanitize_filename(musictrack.key) %></td>
+    	<td><%= link_to "Play", download_url_for(musictrack.key), :class => "html5" %></td>
+    	<td><%= link_to "Download", dl_path(:awskey => musictrack.key) %></td>
+        <td><%= link_to "Delete", dmt_path(:awskey => musictrack.key), :method => :post %></td>
+    </tr> 
+	<% end %>
+<% end %>
+</table>
+
