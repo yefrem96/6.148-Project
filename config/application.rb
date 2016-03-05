@@ -12,8 +12,8 @@ module Musicbook1
     config.filter_parameters += [:password]
  
     AWS::S3::Base.establish_connection!(
-      :access_key_id     => 'AKIAJDT6QXDTPNZBIVBQ',
-      :secret_access_key => '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'
+      :access_key_id     => '',
+      :secret_access_key => ''
     )
     BUCKET = 'songholder'
     AWS::S3::DEFAULT_HOST.replace "s3-us-west-2.amazonaws.com"
